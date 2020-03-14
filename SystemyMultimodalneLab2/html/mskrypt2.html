@@ -1,0 +1,244 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>mskrypt2</title><meta name="generator" content="MATLAB 9.7"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-03-14"><meta name="DC.source" content="mskrypt2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput">figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 1000 800])
+hold <span class="string">on</span>
+title(<span class="string">'Dane Sygna&#322;u'</span>)
+<span class="comment">% plot(daneP.R)</span>
+plot(daneP.R(12:254))
+<span class="comment">% Pomiary  bez zak&#322;&oacute;ce&#324;</span>
+xR =  [1:length(daneP.R(12:254))];
+yR = daneP.R(12:254)';
+p1 = 7.2602e-10;
+p2 = 6.9551e-07;
+p3 = -0.00032453;
+p4 = 0.0050677;
+p5 = 206.47;
+<span class="comment">%Dopasowana krzywa wielomianowa</span>
+pR = [p1 p2 p3 p4 p5];
+plot(polyval(pR,xR))
+
+
+<span class="comment">%plot(daneP.G)</span>
+plot(daneP.G(10:255))
+xG =  [1:length(daneP.G(10:255))];
+yG = daneP.G(10:255)';
+p1 = -1.647e-08;
+p2 = 1.0218e-05;
+p3 = -0.0020282;
+p4 = 0.10609;
+p5 = 175.03;
+pG = [p1 p2 p3 p4 p5];
+plot(polyval(pG,xG))
+
+
+<span class="comment">%plot(daneP.B)</span>
+plot(daneP.B(12:254))
+xB =  [1:length(daneP.B(12:254))];
+yB = daneP.B(12:254)';
+p1 = -1.6042e-09;
+p2 = 2.3764e-06;
+p3 = -0.00069774;
+p4 = 0.029086;
+p5 = 164.13;
+pB = [p1 p2 p3 p4 p5];
+plot(polyval(pB,xG))
+
+
+<span class="comment">%FFT sygna&#322;u</span>
+czest = 60*15;
+figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 1000 800])
+hold <span class="string">on</span>
+
+subplot(3,1,1)
+Y = fft(yR - polyval(pR,xR));
+P2 = abs(Y/length(daneP.G(10:255)));
+P1 = P2(1:floor(length(daneP.G(10:255))/2+1));
+P1(2:end-1) = 2*P1(2:end-1);
+f = czest*(0:(length(daneP.G(10:255))/2))/length(daneP.G(10:255));
+plot(f,P1)
+title(<span class="string">'FFT Sygna&#322;u'</span>)
+xlabel(<span class="string">'Cz&#281;stotliwo&#347;&#263; (Hz)'</span>)
+ylabel(<span class="string">'|Y(f)|'</span>)
+[maxY, maxX] = max(P1);
+text(maxX + 60, maxY, strcat(<span class="string">'Fc = '</span>,sprintf(<span class="string">'%0.3f'</span>,maxY), <span class="string">'[Hz]'</span>))
+
+subplot(3,1,2)
+Y = fft(yG - polyval(pG,xG));
+P2 = abs(Y/length(daneP.R(12:254)));
+P1 = P2(1:floor(length(daneP.R(12:254))/2+1));
+P1(2:end-1) = 2*P1(2:end-1);
+f = czest*(0:(length(daneP.R(12:254))/2))/length(daneP.R(12:254));
+plot(f,P1)
+xlabel(<span class="string">'Cz&#281;stotliwo&#347;&#263; (Hz)'</span>)
+ylabel(<span class="string">'|Y(f)|'</span>)
+[maxY, maxX] = max(P1);
+text(maxX + 60, maxY, strcat(<span class="string">'Fc = '</span>,sprintf(<span class="string">'%0.3f'</span>,maxY), <span class="string">'[Hz]'</span>))
+
+
+subplot(3,1,3)
+Y = fft(yB - polyval(pB,xB));
+P2 = abs(Y/length(daneP.B(12:254)));
+P1 = P2(1:floor(length(daneP.B(12:254))/2+1));
+P1(2:end-1) = 2*P1(2:end-1);
+f = czest*(0:(length(daneP.B(12:254))/2))/length(daneP.B(12:254));
+plot(f,P1)
+xlabel(<span class="string">'Cz&#281;stotliwo&#347;&#263; (Hz)'</span>)
+ylabel(<span class="string">'|Y(f)|'</span>)
+[maxY, maxX] = max(P1);
+text(maxX + 60, maxY, strcat(<span class="string">'Fc = '</span>,sprintf(<span class="string">'%0.3f'</span>,maxY), <span class="string">'[Hz]'</span>))
+</pre><img vspace="5" hspace="5" src="mskrypt2_01.png" alt=""> <img vspace="5" hspace="5" src="mskrypt2_02.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+figure('Renderer', 'painters', 'Position', [10 10 1000 800])
+hold on
+title('Dane Sygnału')
+% plot(daneP.R)
+plot(daneP.R(12:254))
+% Pomiary  bez zakłóceń
+xR =  [1:length(daneP.R(12:254))];
+yR = daneP.R(12:254)';
+p1 = 7.2602e-10;
+p2 = 6.9551e-07;
+p3 = -0.00032453;
+p4 = 0.0050677;
+p5 = 206.47;
+%Dopasowana krzywa wielomianowa
+pR = [p1 p2 p3 p4 p5];
+plot(polyval(pR,xR))
+
+
+%plot(daneP.G)
+plot(daneP.G(10:255))
+xG =  [1:length(daneP.G(10:255))];
+yG = daneP.G(10:255)';
+p1 = -1.647e-08;
+p2 = 1.0218e-05;
+p3 = -0.0020282;
+p4 = 0.10609;
+p5 = 175.03;
+pG = [p1 p2 p3 p4 p5];
+plot(polyval(pG,xG))
+
+
+%plot(daneP.B)
+plot(daneP.B(12:254))
+xB =  [1:length(daneP.B(12:254))];
+yB = daneP.B(12:254)';
+p1 = -1.6042e-09;
+p2 = 2.3764e-06;
+p3 = -0.00069774;
+p4 = 0.029086;
+p5 = 164.13;
+pB = [p1 p2 p3 p4 p5];
+plot(polyval(pB,xG))
+
+
+%FFT sygnału
+czest = 60*15;
+figure('Renderer', 'painters', 'Position', [10 10 1000 800])
+hold on
+
+subplot(3,1,1)
+Y = fft(yR - polyval(pR,xR));
+P2 = abs(Y/length(daneP.G(10:255)));
+P1 = P2(1:floor(length(daneP.G(10:255))/2+1));
+P1(2:end-1) = 2*P1(2:end-1);
+f = czest*(0:(length(daneP.G(10:255))/2))/length(daneP.G(10:255));
+plot(f,P1)
+title('FFT Sygnału')
+xlabel('Częstotliwość (Hz)')
+ylabel('|Y(f)|')
+[maxY, maxX] = max(P1);
+text(maxX + 60, maxY, strcat('Fc = ',sprintf('%0.3f',maxY), '[Hz]'))
+
+subplot(3,1,2)
+Y = fft(yG - polyval(pG,xG));
+P2 = abs(Y/length(daneP.R(12:254)));
+P1 = P2(1:floor(length(daneP.R(12:254))/2+1));
+P1(2:end-1) = 2*P1(2:end-1);
+f = czest*(0:(length(daneP.R(12:254))/2))/length(daneP.R(12:254));
+plot(f,P1)
+xlabel('Częstotliwość (Hz)')
+ylabel('|Y(f)|')
+[maxY, maxX] = max(P1);
+text(maxX + 60, maxY, strcat('Fc = ',sprintf('%0.3f',maxY), '[Hz]'))
+
+
+subplot(3,1,3)
+Y = fft(yB - polyval(pB,xB));
+P2 = abs(Y/length(daneP.B(12:254)));
+P1 = P2(1:floor(length(daneP.B(12:254))/2+1));
+P1(2:end-1) = 2*P1(2:end-1);
+f = czest*(0:(length(daneP.B(12:254))/2))/length(daneP.B(12:254));
+plot(f,P1)
+xlabel('Częstotliwość (Hz)')
+ylabel('|Y(f)|')
+[maxY, maxX] = max(P1);
+text(maxX + 60, maxY, strcat('Fc = ',sprintf('%0.3f',maxY), '[Hz]'))
+##### SOURCE END #####
+--></body></html>

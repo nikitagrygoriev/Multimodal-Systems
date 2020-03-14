@@ -1,0 +1,74 @@
+hold on
+
+% plot(daneP.R)
+% plot(daneP.R(12:254))
+xR =  [1:length(daneP.R(12:254))];
+yR = daneP.R(12:254)';
+
+p1 = 7.2602e-10;
+p2 = 6.9551e-07;
+p3 = -0.00032453;
+p4 = 0.0050677;
+p5 = 206.47;
+pR = [p1 p2 p3 p4 p5];
+% plot(polyval(y,xR))
+% plot(yR - polyval(y,xR))
+
+
+
+%plot(daneP.G)
+plot(daneP.G(10:255))
+xG =  [1:length(daneP.G(10:255))];
+yG = daneP.G(10:255)';
+pG = [p1 p2 p3 p4 p5];
+  p1 = -1.647e-08
+  p2 = 1.0218e-05
+  p3 = -0.0020282
+  p4 = 0.10609
+  p5 = 175.03
+% plot(polyval(pG,xG))
+
+
+
+%plot(daneP.B) 
+% plot(daneP.B(12:254))
+xB =  [1:length(daneP.B(12:254))];
+yB = daneP.B(12:254)';
+pB = [p1 p2 p3 p4 p5];
+% plot(polyval(pB,xB))
+
+
+
+norm(polyval(pR,xR) - yR)
+norm(polyval(pG,xG) - yG)
+norm(polyval(pB,xB) - yB)
+
+
+% hold off
+% clf
+% czest = 60*15;
+% hold on
+% 
+% Y = fft(yR - polyval(pR,xR));
+% P2 = abs(Y/length(daneP.G(10:255)));
+% P1 = P2(1:length(daneP.G(10:255))/2+1);
+% P1(2:end-1) = 2*P1(2:end-1);
+% f = czest*(0:(length(daneP.G(10:255))/2))/length(daneP.G(10:255));
+% plot(f,P1) 
+% title('FFT Sygnału')
+% xlabel('Częstotliwość (Hz)')
+% ylabel('|Y(f)|')
+
+% Y = fft(yG - polyval(pG,xG));
+% P2 = abs(Y/length(daneP.R(12:254)));
+% P1 = P2(1:length(daneP.R(12:254))/2+1);
+% P1(2:end-1) = 2*P1(2:end-1);
+% f = czest*(0:(length(daneP.R(12:254))/2))/length(daneP.R(12:254));
+% plot(f,P1) 
+% 
+% Y = fft(yB - polyval(pB,xB));
+% P2 = abs(Y/length(daneP.B(12:254)));
+% P1 = P2(1:length(daneP.B(12:254))/2+1);
+% P1(2:end-1) = 2*P1(2:end-1);
+% f = czest*(0:(length(daneP.B(12:254))/2))/length(daneP.B(12:254));
+% plot(f,P1) 
