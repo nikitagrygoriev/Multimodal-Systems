@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<productData>
+  <altDependencies>
+    <product>
+      <productBaseCode>IA</productBaseCode>
+      <productName>Image Acquisition Toolbox</productName>
+      <productNumber>78</productNumber>
+      <productVersion>6.1</productVersion>
+      <releaseDescription>R2019b</releaseDescription>
+      <releaseFamily>R2019b</releaseFamily>
+    </product>
+  </altDependencies>
+  <dependsOn>
+    <component>
+      <name>hardwaresupportpkgs/licenses/asla_license_common</name>
+      <instrset>0</instrset>
+      <locale />
+      <platformList>
+        <platform>glnxa64</platform>
+        <platform>maci64</platform>
+        <platform>win64</platform>
+      </platformList>
+      <version>1563492237</version>
+    </component>
+    <component>
+      <name>hardwaresupportpkgs/testmeas/imaq_genericvideo_common</name>
+      <instrset>0</instrset>
+      <locale />
+      <platformList>
+        <platform>glnxa64</platform>
+        <platform>maci64</platform>
+        <platform>win64</platform>
+      </platformList>
+      <version>1572540925</version>
+    </component>
+  </dependsOn>
+  <installerUsage>
+    <usage>professional</usage>
+  </installerUsage>
+  <isControllingProduct>false</isControllingProduct>
+  <licenseAgreementType>ASLA</licenseAgreementType>
+  <platformList>
+    <platform>glnxa64</platform>
+    <platform>maci64</platform>
+    <platform>win64</platform>
+  </platformList>
+  <productBaseCode>OSVIDEO</productBaseCode>
+  <productName>Image Acquisition Toolbox Support Package for OS Generic Video Interface</productName>
+  <productNumber>2044</productNumber>
+  <productType>hardwareSupportPkg</productType>
+  <productVersion>19.2.2</productVersion>
+  <releaseDescription>R2019b</releaseDescription>
+  <releaseFamily>R2019b</releaseFamily>
+  <requiredProducts />
+</productData>
+
